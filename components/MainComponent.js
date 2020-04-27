@@ -4,6 +4,8 @@ import Directory from './DirectoryComponent';
 import CampsiteInfo from './CampsiteInfoComponent';
 import { View, Platform } from 'react-native';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+import AboutComponent from './AboutComponent';
+import ContactComponent from './ContactComponent';
 
 const DirectoryNavigator = createStackNavigator(
     {
@@ -41,10 +43,46 @@ const HomeNavigator = createStackNavigator(
     }
 )
 
+const AboutNavigator = createStackNavigator(
+    {
+        Home: { screen: AboutComponent}
+    },
+    {
+        NavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+)
+
+const ContactNavigator = createStackNavigator(
+    {
+        Home: { screen: ContactComponent}
+    },
+    {
+        NavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+)
+
 const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
-        Directory: {screen: DirectoryNavigator}
+        Directory: {screen: DirectoryNavigator},
+        About: { screen: AboutComponent },
+        Contact: { screen: ContactComponent} 
     },
     {
         drawerBackgroundColor: '#CEC8FF'

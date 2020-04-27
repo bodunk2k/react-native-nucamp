@@ -7,6 +7,7 @@ import { PARTNERS } from '../shared/partners';
 import { LearnMoreLinks } from 'react-native/Libraries/NewAppScreen';
 
 function RenderItem({item}) {
+    console.log("item",item);
     if (item) {
         return(
             <Card
