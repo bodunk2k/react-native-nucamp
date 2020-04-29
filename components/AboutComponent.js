@@ -21,20 +21,22 @@ function Mission() {
                 </Text>  
             </Card>
 
-        );
+    );
 }
 
 class  AboutComponent extends Component  {
+    
+    
     constructor(props) {
         super(props);
         this.state = {
             partners: PARTNERS
-        };
-}
+        }
+    }
 
-static navigationOptions = {
-    title: 'About Us'
-};
+    static navigationOptions = {
+        title: 'About Us'
+    }
 
    
 
@@ -44,19 +46,19 @@ static navigationOptions = {
                     <ListItem title={item.item.name} 
                     subtitle={item.item.description}
                     leftAvatar={{source: require('./images/bootstrap-logo.png')}}/>
-                )
+                );
             }
-        return (
-            <ScrollView>
-                <Mission />
-                <Card title="Community Partners">
-                    <FlatList data={this.state.partners} renderItem={Renderpartner} keyExtractor={item=>item.id.toString()}>
-                    </FlatList>
-                </Card>
-            </ScrollView>
-            
-        )
+            return (
+                <ScrollView>
+                    <Mission />
+                    <Card title="Community Partners">
+                        <FlatList data={this.state.partners} renderItem={Renderpartner} keyExtractor={item=>item.id.toString()}>
+                        </FlatList>
+                    </Card>
+                </ScrollView>
+                
+            );
         }
-    }
+}
     
     export default AboutComponent;
