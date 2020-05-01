@@ -27,6 +27,7 @@ const DirectoryNavigator = createStackNavigator(
             navigationOptions: ({navigation}) => ({
                 headerLeft: <Icon 
                     name='list'
+                    color='white'
                     type='font-awesome'
                     iconStyle={StyleSheet.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
@@ -64,6 +65,7 @@ const HomeNavigator = createStackNavigator(
             },
             headerLeft: <Icon 
             name='home'
+            color='white'
             type='font-awesome'
             iconStyle={StyleSheet.stackIcon}
             onPress={() => navigation.toggleDrawer()}
@@ -87,6 +89,7 @@ const AboutNavigator = createStackNavigator(
             },
             headerLeft: <Icon 
             name='info-circle'
+            color='white'
             type='font-awesome'
             iconStyle={StyleSheet.stackIcon}
             onPress={() => navigation.toggleDrawer()}
@@ -110,6 +113,7 @@ const ContactNavigator = createStackNavigator(
             },
             headerLeft: <Icon 
             name='address-card'
+            color='white'
             type='font-awesome'
             iconStyle={StyleSheet.stackIcon}
             onPress={() => navigation.toggleDrawer()}
@@ -147,6 +151,7 @@ const MainNavigator = createDrawerNavigator(
                     <Icon 
                     iconStyle={StyleSheet.stackIcon}
                         name='home'
+                        color='white'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
