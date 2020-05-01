@@ -7,6 +7,7 @@ import { createStackNavigator, createDrawerNavigator,
 DrawerItems } from 'react-navigation';
 import AboutComponent from './AboutComponent';
 import ContactComponent from './ContactComponent';
+import Reservation from './ReservationComponent';
 import { Icon } from 'react-native-elements';
 import SafeAreaView, { SafeAreaProvider } from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
@@ -122,6 +123,30 @@ const ContactNavigator = createStackNavigator(
     }
 );
 
+const ReservationNavigator = createStackNavigator(
+    {
+        ReservationComponent: { screen: Reservation}
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            },
+            headerLeft: <Icon 
+            name='tree'
+            color='white'
+            type='font-awesome'
+            iconStyle={StyleSheet.stackIcon}
+            onPress={() => navigation.toggleDrawer()}
+        />
+        })
+    }
+);
+
 const CustomDrawerContentComponent = props => (
 <ScrollView>
     <SafeAreaProvider>
@@ -166,6 +191,21 @@ const MainNavigator = createDrawerNavigator(
                     <Icon 
                     iconStyle={StyleSheet.stackIcon}
                         name='list'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Reservation: {
+            screen: ReservationNavigator,
+            navigationOptions: {
+                drawerLable: 'Reserve Campsite',
+                drawerIcon: ({tintColor}) => (
+                    <Icon 
+                    iconStyle={StyleSheet.stackIcon}
+                        name='tree'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
