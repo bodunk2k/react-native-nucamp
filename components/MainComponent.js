@@ -9,6 +9,16 @@ import AboutComponent from './AboutComponent';
 import ContactComponent from './ContactComponent';
 import { Icon } from 'react-native-elements';
 import SafeAreaView, { SafeAreaProvider } from 'react-native-safe-area-view';
+import { connect } from 'react-redux';
+import { fetchCampsites, fetchComments, fetchPromotions,
+    fetchPartners} from '../redux/ActionCreators';
+
+const mapDispatchToProps = {
+    fetchCampsites,
+    fetchComments,
+    fetchPromotions,
+    fetchPartners
+};
 
 const DirectoryNavigator = createStackNavigator(
     {
@@ -135,6 +145,7 @@ const MainNavigator = createDrawerNavigator(
             navigationOptions: {
                 drawerIcon: ({tintColor}) => (
                     <Icon 
+                    iconStyle={StyleSheet.stackIcon}
                         name='home'
                         type='font-awesome'
                         size={24}
@@ -148,6 +159,7 @@ const MainNavigator = createDrawerNavigator(
             navigationOptions: {
                 drawerIcon: ({tintColor}) => (
                     <Icon 
+                    iconStyle={StyleSheet.stackIcon}
                         name='list'
                         type='font-awesome'
                         size={24}
@@ -162,6 +174,7 @@ const MainNavigator = createDrawerNavigator(
                 drawerLable: 'About Us',
                 drawerIcon: ({tintColor}) => (
                     <Icon 
+                    iconStyle={StyleSheet.stackIcon}
                         name='info-circle'
                         type='font-awesome'
                         size={24}
@@ -176,6 +189,7 @@ const MainNavigator = createDrawerNavigator(
                 drawerLable: 'Contact Us',
                 drawerIcon: ({tintColor}) => (
                     <Icon 
+                    iconStyle={StyleSheet.stackIcon}
                         name='address-card'
                         type='font-awesome'
                         size={24}
@@ -192,6 +206,14 @@ const MainNavigator = createDrawerNavigator(
 );
 
 class Main extends Component {
+
+        componentDidMount() {
+            this.props.fetchCampsites();
+            this.props.fetchComments();
+            this.props.fetchPromotions();
+            this.props.fetchPartners();
+        }
+
         render() {
             return ( 
                 <View style={{
@@ -234,4 +256,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Main;
+export default connect(null, mapDispatchToProps)(Main);
