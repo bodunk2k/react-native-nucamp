@@ -7,6 +7,7 @@ import { createStackNavigator, createDrawerNavigator,
 DrawerItems } from 'react-navigation';
 import AboutComponent from './AboutComponent';
 import ContactComponent from './ContactComponent';
+import Favorites from './FavoritesComponent';
 import Reservation from './ReservationComponent';
 import { Icon } from 'react-native-elements';
 import SafeAreaView, { SafeAreaProvider } from 'react-native-safe-area-view';
@@ -147,6 +148,30 @@ const ReservationNavigator = createStackNavigator(
     }
 );
 
+const FavoritesNavigator = createStackNavigator(
+    {
+        Favorites: { screen: Favorites}
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            },
+            headerLeft: <Icon 
+            name='heart'
+            color='white'
+            type='font-awesome'
+            iconStyle={StyleSheet.stackIcon}
+            onPress={() => navigation.toggleDrawer()}
+        />
+        })
+    }
+);
+
 const CustomDrawerContentComponent = props => (
 <ScrollView>
     <SafeAreaProvider>
@@ -206,6 +231,21 @@ const MainNavigator = createDrawerNavigator(
                     <Icon 
                     iconStyle={StyleSheet.stackIcon}
                         name='tree'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
+        Favorites: {
+            screen: FavoritesNavigator,
+            navigationOptions: {
+                drawerLable: 'My Favorites',
+                drawerIcon: ({tintColor}) => (
+                    <Icon 
+                    iconStyle={StyleSheet.stackIcon}
+                        name='heart'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
